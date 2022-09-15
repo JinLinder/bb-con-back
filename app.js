@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 app.use(function(req, res, next) {
-    res.setTimeout(15);
+    res.setTimeout(30);
     next();
   });
 
