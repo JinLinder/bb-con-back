@@ -5,11 +5,12 @@ const activity = require('../models/activity');
 var timeout = require('connect-timeout');
 
 // get all activities
-router.get('/', timeout('30s'), (req, res, next) => {
-    activity.find({})
-    .then(data=>{console.log(data);
-        res.json(data)
-    })
+router.get('/', timeout('10s'), (req, res, next) => {
+    console.log("activity")
+    // activity.find({})
+    // .then(data=>{console.log(data);
+    //     res.json(data)
+    // })
 })
 
 // post new activities
