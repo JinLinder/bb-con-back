@@ -24,12 +24,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
-
-app.use(function(req, res, next) {
-    res.setTimeout(30);
-    next();
-  });
-
+var timeout = require('connect-timeout')
+// app.use(function(req, res, next) {
+//     res.setTimeout(30);
+//     next();
+//   });
+app.use(timeout('5s'))
 app.use('/', indexRouter);
 app.use('/user', userRouter);
 app.use('/login', loginRouter);
@@ -50,6 +50,9 @@ mongoose.connect(process.env.MONGO_URL, {
     }
 })
 
+function haltOnTimedout (req, res, next) {
+    if (!req.timedout) next()
+  }
 
 
 
