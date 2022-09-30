@@ -6,7 +6,6 @@ var timeout = require('connect-timeout');
 
 // get all activities
 router.get('/', (req, res, next) => {
-    // res.status(200).send({message:"hejhej"})
     activity.find({})
     .then(data=>{console.log(data);
         res.json(data)
